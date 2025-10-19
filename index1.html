@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng 20/10</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #ffe6ea, #fff0f6, #fff7ed);
+            font-family: "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .flower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://cdn.pixabay.com/photo/2018/03/14/09/48/flowers-3228861_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        h1 {
+            color: #c2185b;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-shadow: 2px 2px 8px rgba(255, 105, 180, 0.4);
+            animation: fadeIn 2s ease-in-out;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .slideshow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .slideshow img {
+            width: min(320px, 85vw);
+            height: min(380px, 95vw);
+            object-fit: cover;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(255, 128, 171, 0.4);
+            border: 3px solid white;
+        }
+
+        .slideshow img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 35px rgba(255, 128, 171, 0.6);
+        }
+
+        .hint {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #e91e63;
+            font-weight: 500;
+            animation: blink 2s infinite;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 16px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            color: #d81b60;
+            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            line-height: 1.6;
+            max-width: 800px;
+            animation: slideIn 2.5s ease-in-out;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: scale(0.8); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1); 
+            }
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Hiệu ứng cho điện thoại */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                gap: 25px;
+                padding: 20px 0;
+            }
+            
+            h1 {
+                margin-bottom: 5px;
+            }
+            
+            .slideshow {
+                gap: 15px;
+            }
+            
+            h2 {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+            
+            .hint {
+                font-size: 0.95rem;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Hiệu ứng cho máy tính bảng */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                gap: 35px;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Hiệu ứng cho desktop */
+        @media (min-width: 1025px) {
+            .container {
+                gap: 40px;
+            }
+            
+            .slideshow img {
+                width: 340px;
+                height: 400px;
+            }
+        }
+
+        /* Đảm bảo nội dung không bị tràn */
+        @media (max-height: 700px) {
+            .container {
+                padding: 15px 0;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flower"></div>
+    
+    <div class="container">
+        <h1>💐 Chúc mừng Ngày Phụ nữ Việt Nam 💐</h1>
+
+        <div class="slideshow">
+            <img id="slide"
+                 src="https://sf-static.upanhlaylink.com/img/image_20251020cad0b439f46c9e81f930f0db62c6aaf7.jpg"
+                 alt="Ảnh chúc mừng 20/10">
+            <p class="hint">👉 Nhấn vào ảnh để đổi sang ảnh tiếp theo 💖</p>
+        </div>
+
+        <h2>Em Khánh chúc chị 20/10 vui vẻ, tràn ngập hạnh phúc và sớm có anh người yêu siêu sịn như em nha 💕</h2>
+    </div>
+
+    <canvas id="confetti"></canvas>
+
+    <script>
+        const images = [
+            "https://sf-static.upanhlaylink.com/img/image_20251020cad0b439f46c9e81f930f0db62c6aaf7.jpg",
+            "https://sf-static.upanhlaylink.com/img/image_202510206cc825639d1ee5474d7e1ef878a63706.jpg",
+            "https://sf-static.upanhlaylink.com/img/image_2025102030f90b2045db79eb999407ccef5296e3.jpg",
+            "https://sf-static.upanhlaylink.com/img/image_20251020475bc0a548b14db359d365f4b81277c5.jpg",
+            "https://sf-static.upanhlaylink.com/img/image_20251020509592893892ed7b3c477e1beb677563.jpg"
+        ];
+
+        let index = 0;
+        const slide = document.getElementById("slide");
+
+        slide.addEventListener("click", () => {
+            index = (index + 1) % images.length;
+            slide.style.opacity = 0;
+            setTimeout(() => {
+                slide.src = images[index];
+                slide.style.opacity = 1;
+            }, 300);
+        });
+
+        window.onload = () => launchConfetti();
+
+        function launchConfetti() {
+            const canvas = document.getElementById("confetti");
+            const ctx = canvas.getContext("2d");
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener("resize", resize);
+
+            const confs = [];
+            const colors = ["#ff4d95", "#ffd67a", "#ffb6d5", "#ff8a66", "#ffd0f0", "#c2185b"];
+            
+            for (let i = 0; i < 200; i++) {
+                confs.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: 2 + Math.random() * 5,
+                    r: 6 + Math.random() * 8,
+                    c: colors[Math.floor(Math.random() * colors.length)],
+                    rot: Math.random() * 360,
+                    vr: (Math.random() - 0.5) * 10,
+                });
+            }
+
+            function frame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (const c of confs) {
+                    c.x += c.vx;
+                    c.y += c.vy;
+                    c.rot += c.vr;
+                    
+                    ctx.save();
+                    ctx.translate(c.x, c.y);
+                    ctx.rotate((c.rot * Math.PI) / 180);
+                    ctx.fillStyle = c.c;
+                    
+                    // Tạo hình confetti đa dạng
+                    if (Math.random() > 0.7) {
+                        // Hình tròn
+                        ctx.beginPath();
+                        ctx.arc(0, 0, c.r/2, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        // Hình chữ nhật
+                        ctx.fillRect(-c.r / 2, -c.r / 2, c.r, c.r * 0.6);
+                    }
+                    
+                    ctx.restore();
+                    
+                    if (c.y > canvas.height + 20) {
+                        c.y = -10;
+                        c.x = Math.random() * canvas.width;
+                    }
+                }
+                requestAnimationFrame(frame);
+            }
+            frame();
+        }
+
+        // Thêm hiệu ứng scroll mượt mà
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
